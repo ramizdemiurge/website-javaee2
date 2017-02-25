@@ -1,4 +1,5 @@
 <%@ page import="java.util.Objects" %>
+<%@ page import="static java.util.Objects.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
@@ -18,7 +19,7 @@
 <div>
     <div class="uk-background-muted uk-padding uk-panel">
         <%
-            if (!(Objects.equals(datas[1], null)))
+            if (!(equals(datas[1], null)))
             {
         %>
         Welcome: ${Datas[1]} (${username})
