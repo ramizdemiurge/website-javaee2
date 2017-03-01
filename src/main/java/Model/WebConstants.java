@@ -1,8 +1,5 @@
-package constants;
+package Model;
 
-/**
- * Created by adsf on 14.01.2017.
- */
 public class WebConstants
 {
     private String title;
@@ -24,7 +21,7 @@ public class WebConstants
 
     public String getHtmlHead()
     {
-        String temp = "<!DOCTYPE html>\n" +
+        return "<!DOCTYPE html>\n" +
                 "<html lang=\""+lang+"\">\n" +
                 " <head>\n" +
                 "<link rel=\"stylesheet\" href=\"css/uikit.min.css\" />\n" +
@@ -36,12 +33,11 @@ public class WebConstants
                 "  <title>" + title + "</title>\n" +
                 " </head> \n" +
                 " <body>";
-        return temp;
     }
 
     public String getFooter()
     {
-        String temp = " <footer>\n" +
+        return " <footer>\n" +
                 "    " + footer + "\n" +
                 "               <div class=\"uk-background-muted uk-padding uk-panel\">\n" +
                 "                   <hr class=\"uk-divider-icon\">" +
@@ -50,7 +46,6 @@ public class WebConstants
                 "       </footer>\n" +
                 "   </body> \n" +
                 "</html>";
-        return temp;
     }
 
     public void addMetaData(String metaData)

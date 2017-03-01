@@ -1,7 +1,7 @@
-package servlets;
+package Controller;
 
-import constants.WebConstants;
-import dbclasses.DBWorker;
+import Model.WebConstants;
+import Model.dbclasses.DBWorker;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

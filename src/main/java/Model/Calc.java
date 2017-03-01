@@ -1,8 +1,9 @@
-class Calc
+package Model;
+public class Calc
 {
     private int result;
 
-    void add(int...params)
+    public void add(int...params)
     {
         for (int param: params)
         {
@@ -10,7 +11,7 @@ class Calc
         }
     }
 
-    int getResult()
+    public int getResult()
     {
         return result;
     }

@@ -1,3 +1,4 @@
+import Model.Calc;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -11,4 +12,5 @@ public class CalcTest
         calculator.add(1,2,3);
         Assert.assertEquals(6,calculator.getResult());
     }
+
 }

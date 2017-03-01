@@ -1,4 +1,4 @@
-package dbclasses;
+package Model.dbclasses;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

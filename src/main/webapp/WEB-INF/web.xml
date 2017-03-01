@@ -6,19 +6,19 @@
 
     <servlet>
         <servlet-name>IndexPage</servlet-name>
-        <servlet-class>servlets.MainServlet</servlet-class>
+        <servlet-class>Controller.MainServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>HomePage</servlet-name>
-        <servlet-class>servlets.HomeServlet</servlet-class>
+        <servlet-class>Controller.HomeServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>RegPage</servlet-name>
-        <servlet-class>servlets.RegisterServlet</servlet-class>
+        <servlet-class>Controller.RegisterServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ExitPage</servlet-name>
-        <servlet-class>servlets.ExitServlet</servlet-class>
+        <servlet-class>Controller.ExitServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>IndexPage</servlet-name>
