@@ -59,7 +59,7 @@ public class HomeServlet extends HttpServlet
             {
                 mySession.setAttribute("Datas", datas);
                 mySession.setAttribute("username", username);
-                getServletContext().getRequestDispatcher("/jsp_pages/home_get.jsp").forward(req, resp);
+                getServletContext().getRequestDispatcher("/View/home_get.jsp").forward(req, resp);
             } else
             {
                 out.println("Correct your login/password.");

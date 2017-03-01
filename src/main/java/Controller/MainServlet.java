@@ -23,7 +23,7 @@ public class MainServlet extends HttpServlet
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException
     {
-        getServletContext().getRequestDispatcher("/jsp_pages/index_get.jsp").forward(req, resp);
+        getServletContext().getRequestDispatcher("/View/index_get.jsp").forward(req, resp);
     }
 
     @Override
