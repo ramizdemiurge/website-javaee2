@@ -1,4 +1,4 @@
-import Model.Calc;
+import Models.Calc;
 import org.junit.Assert;
 import org.junit.Test;
 
