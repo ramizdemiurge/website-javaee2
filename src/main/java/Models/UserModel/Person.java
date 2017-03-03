@@ -18,6 +18,11 @@ abstract class Person extends Object
         return name;
     }
 
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+
     public abstract String getDescription();
 
     @Override

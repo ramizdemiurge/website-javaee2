@@ -5,18 +5,17 @@ package Models.UserModel;
  */
 public class User extends Person
 {
-    private String login;
     private String password;
+    private boolean correctness;
+
+    public void setCorrectness (boolean correctness)
+    {
+        this.correctness = correctness;
+    }
 
     public User(String username)
     {
         super(username);
-    }
-
-
-    public String getLogin()
-    {
-        return login;
     }
 
     public String getPassword()
@@ -24,10 +23,14 @@ public class User extends Person
         return password;
     }
 
-
     public String getDescription()
     {
         return null;
+    }
+
+    public boolean getCorrectness()
+    {
+        return correctness;
     }
 
     public String toString()
@@ -35,9 +38,9 @@ public class User extends Person
         //return getClass().getName() + "[name=" + getUsername() + "]";
         if (!(this.getName().equals(null)))
         {
-            return this.getName() + "(" + getLogin() + ")";
+            return this.getName() + "(" + getUsername() + ")";
         }
-        return this.getLogin();
+        return this.getUsername();
     }
 
     public static void main(String[] args)
