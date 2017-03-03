@@ -20,9 +20,9 @@
 %>
 <html lang="ru">
 <head>
-    <link rel="stylesheet" href="css/uikit.min.css"/>
-    <script src="js/jquery.js"></script>
-    <script src="js/uikit.min.js"></script>
+    <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/uikit.min.css"/>
+    <script src="${pageContext.servletContext.contextPath}/js/jquery.js"></script>
+    <script src="${pageContext.servletContext.contextPath}/js/uikit.min.js"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JSP Servlet</title>
