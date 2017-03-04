@@ -1,8 +1,8 @@
 package Models.dbclasses;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import Models.UserModel.User;
+
+import java.sql.*;
 //   /opt/lampp/mysql/scripts/ctl.sh start
 
 public class DBWorker
@@ -28,9 +28,31 @@ public class DBWorker
         }
     }
     public Connection getConnection()
+
     {
         return connection;
     }
 
-
+    public User InitUser(User user)
+    {
+            DBWorker worker = new DBWorker();
+            String query = "select * from users WHERE username=\"" + user.getUsername() + "\"";
+            try
+            {
+                Statement statement = worker.getConnection().createStatement();
+                ResultSet resultSet = statement.executeQuery(query);
+                while (resultSet.next())
+                {
+                    user.setRealPassword(resultSet.getString("password"));
+                    user.setName(resultSet.getString("name"));
+                    user.setEmail(resultSet.getString("email"));
+                    user.setRegDate(resultSet.getDate("regDate"));
+                }
+                if (user.getPassword().equals(user.getRealPassword())) user.setCorrectness(true);
+            } catch (SQLException Exception)
+            {
+                System.err.print(Exception);
+            }
+        return user;
+    }
 }
