@@ -1,5 +1,6 @@
 package Controllers;
 
+import Models.Methods;
 import Models.UserModel.User;
 import Models.WebConstants;
 import Models.dbclasses.DBWorker;
@@ -41,7 +42,7 @@ public class MainServlet extends HttpServlet
         String login = req.getParameter("login").trim().toLowerCase();
         String passwd = req.getParameter("passwd");
 
-        if (!(login.equals(null) || login.equals("") || passwd.equals(null) || passwd.equals("")))
+        if (!(Methods.EmptyStringDetector(login,passwd)))
         {
             User currentUser = DBWorker.InitUser(new User(login,passwd));
             if (currentUser.getCorrectness())
