@@ -29,6 +29,7 @@ public class MainServlet extends HttpServlet
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException
     {
+        HttpSession mySession = req.getSession();
         String login = req.getParameter("login").trim().toLowerCase();
         String passwd = req.getParameter("passwd");
 
@@ -37,15 +38,13 @@ public class MainServlet extends HttpServlet
             User currentUser = DBWorker.InitUser(new User(login,passwd));
             if (currentUser.getCorrectness())
             {
-                HttpSession mySession = req.getSession();
                 mySession.setAttribute("username", login);
                 mySession.setAttribute("passwd", passwd);
                 resp.sendRedirect("/home");
 
             } else
             {
-                req.getSession().setAttribute("messages","Correct your login/password.");
-                HttpSession mySession = req.getSession();
+                mySession.setAttribute("messages","Correct your login/password.");
                 mySession.removeAttribute("username");
                 mySession.removeAttribute("password");
                 resp.sendRedirect("/index.html");
