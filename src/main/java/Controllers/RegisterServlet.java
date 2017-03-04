@@ -1,6 +1,5 @@
 package Controllers;
 
-import Models.WebConstants;
 import Models.dbclasses.DBWorker;
 
 import javax.servlet.ServletException;
@@ -8,7 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -23,16 +21,6 @@ public class RegisterServlet extends HttpServlet
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
     {
-        resp.setContentType("text/html;charset=utf-8");
-        PrintWriter out = resp.getWriter();
-        resp.setContentType("text/html;charset=utf-8");
-        req.setCharacterEncoding("utf8");
-
-        WebConstants register_page = new WebConstants("Register", "utf-8", "ru");
-        out.print(register_page.getHtmlHead());
-        out.print("<div>\n" +
-                "   <div class=\"uk-background-muted uk-padding uk-panel\">\n");
-        out.print("<div uk-alert>");
 
         String[] string_datas = new String[4];
         string_datas[0] = req.getParameter("login").trim().toLowerCase();
@@ -66,7 +54,7 @@ public class RegisterServlet extends HttpServlet
                                     String bd_username = resultSet.getString("username");
                                     if (string_datas[0].equals(bd_username)) status = false;
                                 }
-                            } catch (SQLException err0) { out.print("DB connection error.<br>"+err0); }
+                            } catch (SQLException err0) { System.err.print("DB connection error.<br>"+err0); }
                             if (status)
                             {
                                 /**
@@ -83,7 +71,7 @@ public class RegisterServlet extends HttpServlet
                                         String bd_email = resultSet.getString("email");
                                         if (string_datas[1].equals(bd_email)) status = false;
                                     }
-                                } catch (SQLException err1) { out.print("DB connection error.[2]<br>"+err1); }
+                                } catch (SQLException err1) { System.err.print("DB connection error.[2]<br>"+err1); }
 
                                 if (status)
                                 {
@@ -99,56 +87,38 @@ public class RegisterServlet extends HttpServlet
                                     {
                                         Statement state = worker.getConnection().createStatement();
                                         state.executeUpdate(query);
-                                        out.println("You have registered.");
-                                        out.println("Your username: "+string_datas[0]);
-                                    } catch (SQLException err) { out.print("DB connection error.[3]<br>"+err); }
+                                        req.getSession().setAttribute("messages","You have registered.<br>Your username: "+string_datas[0]);
+                                        resp.sendRedirect("/index.html");
+                                    } catch (SQLException err) { System.err.print(err); }
 
                                 } else {
-                                    out.print("Try another email adress.");
+                                    req.getSession().setAttribute("messages","Try another email adress.");
+                                    resp.sendRedirect("/index.html");
                                 }
                             } else {
-                                out.print("Try another username.");
+                                req.getSession().setAttribute("messages","Try another username.");
+                                resp.sendRedirect("/index.html");
                             }
                         } else {
-                            out.print("Password and password confirmation values are not same.");
+                            req.getSession().setAttribute("messages","Password and password confirmation values are not same.");
+                            resp.sendRedirect("/index.html");
                         }
                     } else {
-                        out.print("Enter your password confirmation.");
+                        req.getSession().setAttribute("messages","Enter your password confirmation.");
+                        resp.sendRedirect("/index.html");
                     }
                 } else {
-                    out.print("Enter your password.");
+                    req.getSession().setAttribute("messages","Enter your password.");
+                    resp.sendRedirect("/index.html");
                 }
 
             } else {
-                out.print("Enter your email.");
+                req.getSession().setAttribute("messages","Enter your email.");
+                resp.sendRedirect("/index.html");
             }
         } else {
-            out.print("Enter your login.");
+            req.getSession().setAttribute("messages","Enter your login.");
+            resp.sendRedirect("/index.html");
         }
-        out.print("</div>");
-        out.print("</div></div>");
-        out.print(register_page.getFooter());
-        out.close();
-
-    }
-
-    public static void main(String[] args)
-    {
-        DBWorker worker = new DBWorker();
-        boolean status = true;
-        String login = "ramiz";
-        // String query = "select * from users WHERE username=" + login;
-        String query = "select * from users WHERE username=\""+login+"\"";
-        try
-        {
-            Statement state = worker.getConnection().createStatement();
-            ResultSet resultSet = state.executeQuery(query);
-            while (resultSet.next())
-            {
-                String bd_username = resultSet.getString("username");
-                if (login.equals(bd_username)) status = false;
-            }
-        } catch (SQLException ignored) { System.out.print("DB connection error.1"); }
-        System.out.println(status);
     }
 }
