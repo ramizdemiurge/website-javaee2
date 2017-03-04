@@ -1,5 +1,6 @@
 package Controllers;
 
+import Models.UserModel.User;
 import Models.WebConstants;
 import Models.dbclasses.DBWorker;
 
@@ -10,9 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 
 /**
  * Created by adsf on 10.01.2017.
@@ -45,27 +43,8 @@ public class MainServlet extends HttpServlet
 
         if (!(login.equals(null) || login.equals("") || passwd.equals(null) || passwd.equals("")))
         {
-            /**
-             * Работаем с базой данных
-             */
-            DBWorker worker = new DBWorker();
-            boolean status = false;
-            // String query = "select * from users WHERE username=" + login;
-            String query = "select * from users WHERE username=\"" + login + "\"";
-            try
-            {
-                Statement statement = worker.getConnection().createStatement();
-                ResultSet resultSet = statement.executeQuery(query);
-                while (resultSet.next())
-                {
-                    String password = resultSet.getString("password");
-                    if (passwd.equals(password)) status = true;
-                }
-            } catch (SQLException ignored)
-            {
-                out.print(ignored);
-            }
-            if (status)
+            User currentUser = DBWorker.InitUser(new User(login,passwd));
+            if (currentUser.getCorrectness())
             {
                 HttpSession mySession = req.getSession();
                 mySession.setAttribute("username", login);

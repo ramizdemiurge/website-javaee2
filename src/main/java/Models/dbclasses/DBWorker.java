@@ -33,7 +33,7 @@ public class DBWorker
         return connection;
     }
 
-    public User InitUser(User user)
+    public static User InitUser(User user)
     {
             DBWorker worker = new DBWorker();
             String query = "select * from users WHERE username=\"" + user.getUsername() + "\"";

@@ -28,6 +28,12 @@ public class User extends Person
         super(username);
     }
 
+    public User(String username, String password)
+    {
+        super(username);
+        this.password = password;
+    }
+
     public String getPassword()
     {
         return password;
