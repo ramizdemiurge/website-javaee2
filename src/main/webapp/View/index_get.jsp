@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: allard
@@ -30,6 +31,9 @@
 <body>
 <div>
     <div class="uk-background-muted uk-padding uk-panel">
+        <c:if test="${not empty messages}">
+            <div uk-alert>${messages}</div>
+        </c:if>
         <form action="index.html" method="post">
             <fieldset class="uk-fieldset">
                 <legend class="uk-legend">Enter</legend>
