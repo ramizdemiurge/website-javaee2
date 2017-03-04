@@ -1,8 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%
-    String[] datas = (String[]) request.getSession().getAttribute("Datas");
-%>
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -16,7 +14,14 @@
 <body>
 <div>
     <div class="uk-background-muted uk-padding uk-panel">
-        Welcome: ${Datas[1]} (${username})
+        <c:choose>
+            <c:when test="${empty Datas[1]}">
+                Welcome: ${username}
+            </c:when>
+            <c:otherwise>
+                Welcome: ${Datas[1]} (${username})
+            </c:otherwise>
+        </c:choose>
         <a href=exit.jsp>Exit</a>.<br>Registration date: ${Datas[0]}
     </div>
 </div>
