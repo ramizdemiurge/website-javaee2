@@ -1,24 +1,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: allard
-  Date: 2/12/17
-  Time: 7:25 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%
-    HttpSession mySession = request.getSession();
-    String username = (String) mySession.getAttribute("username");
-    String passwd = (String) mySession.getAttribute("passwd");
-    try
-    {
-        if (!(username.equals(null) || username.equals("") || passwd.equals(null) || passwd.equals("")))
-            response.sendRedirect("/home");
-    } catch (Exception ignored)
-    {
-    }
-%>
+
+<c:if test="${not empty username}">
+    <c:if test="${not empty passwd}">
+        <c:redirect url="/home"/>
+    </c:if>
+</c:if>
+
 <html lang="ru">
 <head>
     <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/uikit.min.css"/>
