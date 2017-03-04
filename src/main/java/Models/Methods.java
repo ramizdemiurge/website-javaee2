@@ -15,6 +15,7 @@ public class Methods
         {
             if (string.equals(null) || string.equals(""))
             {
+                String dd;
              return true;
             }
         }
