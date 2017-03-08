@@ -38,7 +38,7 @@
 
                     <h1 class="uk-article-title"><a class="uk-link-reset" href="">Heading</a></h1>
 
-                    <p class="uk-article-meta">Written by <a href="#">Super User</a> on 12 April 2012. Posted in <a href="#">Blog</a></p>
+                    <p class="uk-article-meta">Written by <a href="#">Ramiz</a> on 9 Marth 2017. Posted in <a href="#">Blog</a></p>
 
                     <p class="uk-text-lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
 
