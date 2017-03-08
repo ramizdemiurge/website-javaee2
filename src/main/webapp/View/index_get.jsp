@@ -64,7 +64,7 @@
             </div>
             <div class="uk-width-auto">
                 <div class="uk-card uk-card-default uk-card-body uk-margin-top">
-                    <form action="reg.jsp" method="post">
+                    <form action="reg" method="post">
                         <fieldset class="uk-fieldset">
                             <legend class="uk-legend">Register</legend>
                             <div class="uk-margin">

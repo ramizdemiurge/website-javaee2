@@ -30,11 +30,11 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>RegPage</servlet-name>
-        <url-pattern>/reg.jsp</url-pattern>
+        <url-pattern>/reg</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ExitPage</servlet-name>
-        <url-pattern>/exit.jsp</url-pattern>
+        <url-pattern>/exit</url-pattern>
     </servlet-mapping>
 
 </web-app>

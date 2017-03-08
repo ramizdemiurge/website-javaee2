@@ -22,7 +22,7 @@
                 Welcome: ${Datas[1]} (${username})
             </c:otherwise>
         </c:choose>
-        <a href=exit.jsp>Exit</a>.<br>Registration date: ${Datas[0]}
+        <a href=exit>Exit</a>.<br>Registration date: ${Datas[0]}
     </div>
 </div>
 <footer>
