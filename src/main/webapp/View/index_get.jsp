@@ -19,7 +19,13 @@
 <body>
 
 <div class="uk-background-muted uk-padding uk-panel">
-
+    <nav class="uk-navbar uk-navbar-container uk-margin">
+        <div class="uk-navbar-left">
+            <a class="uk-navbar-toggle" href="#">
+                <span uk-navbar-toggle-icon></span> <span class="uk-margin-small-left">Menu</span>
+            </a>
+        </div>
+    </nav>
     <c:if test="${not empty messages}">
         <div class="uk-grid">
             <div class="uk-width-1-1 ">
