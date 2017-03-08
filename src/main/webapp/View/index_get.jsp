@@ -17,64 +17,93 @@
     <title>JSP Servlet</title>
 </head>
 <body>
-<div>
-    <div class="uk-background-muted uk-padding uk-panel">
-        <c:if test="${not empty messages}">
-            <div uk-alert>${messages}</div>
-        </c:if>
-        <form action="index.html" method="post">
-            <fieldset class="uk-fieldset">
-                <legend class="uk-legend">Enter</legend>
-                <div class="uk-margin">
-                    <div class="uk-inline"><span class="uk-form-icon" uk-icon="icon: user"></span> <input
-                            class="uk-input" type="text" placeholder="Login" name="login">
-                    </div>
+
+<div class="uk-background-muted uk-padding uk-panel">
+
+    <c:if test="${not empty messages}">
+        <div class="uk-grid">
+            <div class="uk-width-1-1 ">
+
+                <div class="uk-card uk-card-primary uk-card-small uk-card-body uk-light ">
+                    <p>${messages}</p>
                 </div>
-                <div class="uk-margin">
-                    <div class="uk-inline">
-                        <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: lock"></span> <input
-                            class="uk-input" type="password" placeholder="Password" name="passwd">
-                    </div>
+
+            </div>
+        </div>
+    </c:if>
+    <div uk-grid>
+        <div class="uk-width-expand">
+            <div class="uk-card uk-card-default uk-card-body">
+                <div class="uk-text-lead">Добро пожаловать
                 </div>
-                <p uk-margin>
-                    <button class="uk-button uk-button-primary" type="submit" value="SignIn">Sign In</button>
-                </p>
-            </fieldset>
-        </form>
+                <div class="uk-text-meta">Авторизуйтесь либо зарегистрируйтесь на сайте.</div>
+            </div>
+        </div>
+
+        <div class="uk-width-auto">
+            <div class="uk-card uk-card-default uk-card-body">
+                <form action="index.html" method="post">
+                    <fieldset class="uk-fieldset">
+                        <legend class="uk-legend">Enter</legend>
+                        <div class="uk-margin">
+                            <div class="uk-inline"><span class="uk-form-icon" uk-icon="icon: user"></span> <input
+                                    class="uk-input" type="text" placeholder="Login" name="login">
+                            </div>
+                        </div>
+                        <div class="uk-margin">
+                            <div class="uk-inline">
+                                <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: lock"></span> <input
+                                    class="uk-input" type="password" placeholder="Password" name="passwd">
+                            </div>
+                        </div>
+                        <p uk-margin>
+                            <button class="uk-button uk-button-primary" type="submit" value="SignIn">Sign In</button>
+                        </p>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="uk-width-auto">
+                <div class="uk-card uk-card-default uk-card-body uk-margin-top">
+                    <form action="reg.jsp" method="post">
+                        <fieldset class="uk-fieldset">
+                            <legend class="uk-legend">Register</legend>
+                            <div class="uk-margin">
+                                <div class="uk-inline"><span class="uk-form-icon" uk-icon="icon: user"></span> <input
+                                        class="uk-input" type="text" placeholder="Login" name="login">
+                                </div>
+                            </div>
+                            <div class="uk-margin">
+                                <div class="uk-inline"><span class="uk-form-icon" uk-icon="icon: mail"></span> <input
+                                        class="uk-input" type="text" placeholder="E-mail" name="email">
+                                </div>
+                            </div>
+                            <div class="uk-margin">
+                                <div class="uk-inline"><span class="uk-form-icon" uk-icon="icon: lock"></span> <input
+                                        class="uk-input" type="password" placeholder="Password" name="passwd">
+                                </div>
+                            </div>
+                            <div class="uk-margin">
+                                <div class="uk-inline"><span class="uk-form-icon" uk-icon="icon: lock"></span> <input
+                                        class="uk-input" type="password" placeholder="Confirmation" name="passwd2">
+                                </div>
+                            </div>
+                            <p uk-margin>
+                                <button class="uk-button uk-button-primary" type="submit" value="SignUp">Sign Up
+                                </button>
+                            </p>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
+
+
 </div>
-<div>
-    <div class="uk-background-muted uk-padding uk-panel">
-        <form action="reg.jsp" method="post">
-            <fieldset class="uk-fieldset">
-                <legend class="uk-legend">Register</legend>
-                <div class="uk-margin">
-                    <div class="uk-inline"><span class="uk-form-icon" uk-icon="icon: user"></span> <input
-                            class="uk-input" type="text" placeholder="Login" name="login">
-                    </div>
-                </div>
-                <div class="uk-margin">
-                    <div class="uk-inline"><span class="uk-form-icon" uk-icon="icon: mail"></span> <input
-                            class="uk-input" type="text" placeholder="E-mail" name="email">
-                    </div>
-                </div>
-                <div class="uk-margin">
-                    <div class="uk-inline"><span class="uk-form-icon" uk-icon="icon: lock"></span> <input
-                            class="uk-input" type="password" placeholder="Password" name="passwd">
-                    </div>
-                </div>
-                <div class="uk-margin">
-                    <div class="uk-inline"><span class="uk-form-icon" uk-icon="icon: lock"></span> <input
-                            class="uk-input" type="password" placeholder="Confirmation" name="passwd2">
-                    </div>
-                </div>
-                <p uk-margin>
-                    <button class="uk-button uk-button-primary" type="submit" value="SignUp">Sign Up</button>
-                </p>
-            </fieldset>
-        </form>
-    </div>
+
+<div class="uk-background-muted uk-padding uk-panel">
 </div>
+
 <footer>
 
     <div class="uk-background-muted uk-padding uk-panel">
