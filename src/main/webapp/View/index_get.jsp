@@ -1,3 +1,5 @@
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="Models.dbclasses.Articles" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
@@ -6,6 +8,11 @@
         <c:redirect url="/home"/>
     </c:if>
 </c:if>
+
+<%
+    ArrayList<Articles> ArticlesList;
+    ArticlesList = Articles.InitArticles();
+%>
 
 <html lang="ru">
 <head>
@@ -40,15 +47,19 @@
     <div uk-grid>
         <div class="uk-width-expand">
             <div class="uk-card uk-card-default uk-card-body">
+                <%
+                    for (Articles article: ArticlesList)
+                    {
+                %>
                 <article class="uk-article">
 
-                    <h1 class="uk-article-title"><a class="uk-link-reset" href="">Heading</a></h1>
+                    <h1 class="uk-article-title"><a class="uk-link-reset" href=""><%=article.getTitle()%></a></h1>
 
-                    <p class="uk-article-meta">Written by <a href="#">Ramiz</a> on 9 Marth 2017. Posted in <a href="#">Blog</a></p>
+                    <p class="uk-article-meta">Written by <a href="#"><%=article.getAuthor()%></a> on <%=article.getDate()%>.</p>
 
-                    <p class="uk-text-lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
+                    <p class="uk-text-lead"><%=article.getLead_text()%></p>
 
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <p><%=article.getText()%></p>
 
                     <div class="uk-grid-small uk-child-width-auto" uk-grid>
                         <div>
@@ -58,10 +69,14 @@
                             <a class="uk-button uk-button-text" href="#">5 Comments</a>
                         </div>
                     </div>
-
                 </article>
+                <hr class="uk-divider-icon">
+                <%
+                    }
+                %>
             </div>
         </div>
+
 
         <div class="uk-width-auto">
             <div class="uk-card uk-card-default uk-card-body">
@@ -124,15 +139,7 @@
 
 </div>
 
-<div class="uk-background-muted uk-padding uk-panel">
-</div>
 
-<footer>
-
-    <div class="uk-background-muted uk-padding uk-panel">
-        <hr class="uk-divider-icon">
-        <p class="uk-text-small">Created by <a href="https://ramizdemiurge.github.io/">Ramiz Abdullayev</a>. Licensed
-            under <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License Version 2.0</a></p></div>
-</footer>
 </body>
+<c:import url="static/footer.html" />
 </html>

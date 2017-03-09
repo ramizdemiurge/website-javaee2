@@ -25,13 +25,6 @@
         <a href=exit>Exit</a>.<br>Registration date: ${Datas[0]}
     </div>
 </div>
-<footer>
-
-    <div class="uk-background-muted uk-padding uk-panel">
-        <hr class="uk-divider-icon">
-        <p class="uk-text-small">Created by <a href="https://ramizdemiurge.github.io/">Ramiz Abdullayev</a>. Licensed
-            under <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License Version 2.0</a></p>
-    </div>
-</footer>
 </body>
+<c:import url="static/footer.html" />
 </html>
