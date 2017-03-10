@@ -53,7 +53,7 @@
                 %>
                 <article class="uk-article">
 
-                    <h1 class="uk-article-title"><a class="uk-link-reset" href=""><%=article.getTitle()%></a></h1>
+                    <h1 class="uk-article-title"><a class="uk-link-reset" href="/view/<%=article.getId()%>"><%=article.getTitle()%></a></h1>
 
                     <p class="uk-article-meta">Written by <a href="#"><%=article.getAuthor()%></a> on <%=article.getDate()%>.</p>
 

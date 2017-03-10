@@ -19,5 +19,4 @@ public class DBWorkerTest
         User user = DBWorker.InitUser(new User("test","test"));
         Assert.assertTrue(user.getCorrectness());
     }
-
 }
