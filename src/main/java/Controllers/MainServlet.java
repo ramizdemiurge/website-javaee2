@@ -20,10 +20,23 @@ public class MainServlet extends HttpServlet
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException
     {
-        ArrayList<Article> articleList;
-        articleList = Article.InitArticles();
-        req.getSession().setAttribute("articles",articleList);
-        getServletContext().getRequestDispatcher("/View/index_get.jsp").forward(req, resp);
+        String string_id = req.getParameter("article");
+        if (string_id != null)
+        {
+            int id = Integer.parseInt(string_id.trim());
+            Article article;
+            article = Article.InitArticle(new Article(id));
+            req.getSession().setAttribute("article", article);
+            getServletContext().getRequestDispatcher("/View/article_get.jsp").forward(req, resp);
+
+        } else
+        {
+            ArrayList<Article> articleList;
+            articleList = Article.InitArticles();
+            req.getSession().setAttribute("articles",articleList);
+            getServletContext().getRequestDispatcher("/View/index_get.jsp").forward(req, resp);
+
+        }
         req.getSession().removeAttribute("messages");
 
     }

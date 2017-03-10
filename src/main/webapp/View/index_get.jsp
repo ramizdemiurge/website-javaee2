@@ -49,7 +49,7 @@
                     <article class="uk-article">
 
                         <h1 class="uk-article-title"><a class="uk-link-reset"
-                                                        href="${pageContext.request.contextPath}/view.html?id=<c:out value="${article.id}"/>"><c:out
+                                                        href="${pageContext.request.contextPath}/index.html?article=<c:out value="${article.id}"/>"><c:out
                                 value="${article.title}"/></a>
                         </h1>
 
@@ -64,12 +64,12 @@
                         <div class="uk-grid-small uk-child-width-auto" uk-grid>
                             <div>
                                 <a class="uk-button uk-button-text"
-                                   href="${pageContext.request.contextPath}/view.html?id=<c:out value="${article.id}"/>">Read
+                                   href="${pageContext.request.contextPath}/index.html?article=<c:out value="${article.id}"/>">Read
                                     more</a>
                             </div>
                             <div>
                                 <a class="uk-button uk-button-text"
-                                   href="${pageContext.request.contextPath}/view.html?id=<c:out value="${article.id}"/>">5
+                                   href="${pageContext.request.contextPath}/index.html?article=<c:out value="${article.id}"/>">5
                                     Comments</a>
                             </div>
                         </div>
