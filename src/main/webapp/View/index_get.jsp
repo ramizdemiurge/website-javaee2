@@ -9,10 +9,7 @@
     </c:if>
 </c:if>
 
-<%
-    ArrayList<Article> articleList;
-    articleList = Article.InitArticles();
-%>
+<c:set var="articles" value="${sessionScope.articles}"/>
 
 <html lang="ru">
 <head>
@@ -44,47 +41,45 @@
             </div>
         </div>
     </c:if>
+
     <div uk-grid>
         <div class="uk-width-expand">
             <div class="uk-card uk-card-default uk-card-body">
-                <%
-                    for (Article article: articleList)
-                    {
-                %>
-                <article class="uk-article">
+                <c:forEach items="${articles}" var="article">
+                    <article class="uk-article">
 
-                    <h1 class="uk-article-title"><a class="uk-link-reset" href="${pageContext.request.contextPath}/view.html?id=<%=article.getId()%>"><%=article.getTitle()%></a></h1>
+                        <h1 class="uk-article-title"><a class="uk-link-reset" href="${pageContext.request.contextPath}/view.html?id=<c:out value="${article.id}"/>"><c:out value="${article.title}"/></a>
+                        </h1>
 
-                    <p class="uk-article-meta">Written by <a href="#"><%=article.getAuthor()%></a> on <%=article.getDate()%>.</p>
+                        <p class="uk-article-meta">Written by <a href="${pageContext.request.contextPath}/index.html?user=<c:out value="${article.author}"/>"><c:out value="${article.author}"/></a> on <c:out value="${article.date}"/>.</p>
 
-                    <p class="uk-text-lead"><%=article.getLead_text()%></p>
+                        <p class="uk-text-lead"><c:out value="${article.lead_text}"/></p>
 
-                    <p><%=article.getText()%></p>
+                        <p><c:out value="${article.text}"/></p>
 
-                    <div class="uk-grid-small uk-child-width-auto" uk-grid>
-                        <div>
-                            <a class="uk-button uk-button-text" href="${pageContext.request.contextPath}/view.html?id=<%=article.getId()%>">Read more</a>
+                        <div class="uk-grid-small uk-child-width-auto" uk-grid>
+                            <div>
+                                <a class="uk-button uk-button-text"
+                                   href="${pageContext.request.contextPath}/view.html?id=<c:out value="${article.id}"/>">Read more</a>
+                            </div>
+                            <div>
+                                <a class="uk-button uk-button-text" href="${pageContext.request.contextPath}/view.html?id=<c:out value="${article.id}"/>">5 Comments</a>
+                            </div>
                         </div>
-                        <div>
-                            <a class="uk-button uk-button-text" href="#">5 Comments</a>
-                        </div>
-                    </div>
-                </article>
-                <hr class="uk-divider-icon">
-                <%
-                    }
-                %>
+                    </article>
+                    <hr class="uk-divider-icon">
+                </c:forEach>
             </div>
         </div>
 
 
         <div class="uk-width-auto">
             <div class="uk-card uk-card-default uk-card-body">
-                <c:import url="static/loginForm.html" />
+                <c:import url="static/loginForm.html"/>
             </div>
             <div class="uk-width-auto">
                 <div class="uk-card uk-card-default uk-card-body uk-margin-top">
-                    <c:import url="static/regForm.html" />
+                    <c:import url="static/regForm.html"/>
                 </div>
             </div>
         </div>
@@ -95,5 +90,5 @@
 
 
 </body>
-<c:import url="static/footer.html" />
+<c:import url="static/footer.html"/>
 </html>

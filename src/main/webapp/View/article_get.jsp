@@ -48,7 +48,7 @@
 
                     <h1 class="uk-article-title">${article.title}</h1>
 
-                    <p class="uk-article-meta">Written by <a href="#">${article.author}</a> on ${article.date}.</p>
+                    <p class="uk-article-meta">Written by <a href="${pageContext.request.contextPath}/index.html?user=${article.author}">${article.author}</a> on ${article.date}.</p>
 
                     <p class="uk-text-lead">${article.lead_text}</p>
 
