@@ -104,7 +104,7 @@ public class Articles
         this.lead_text = lead_text;
     }
 
-    public static ArrayList<Articles> InitArticles()
+    public static ArrayList<Articles> InitArticle()
     {
         ArrayList<Articles> articles = new ArrayList<Articles>();
 
@@ -135,7 +135,7 @@ public class Articles
         return articles;
     }
 
-    public static Articles InitArticles(Articles articles)
+    public static Articles InitArticle(Articles articles)
     {
         DBWorker worker = new DBWorker();
         String query = "select * from articles WHERE id=\"" + articles.getId() + "\"";
