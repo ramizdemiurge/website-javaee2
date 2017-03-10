@@ -42,7 +42,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ArticlePage</servlet-name>
-        <url-pattern>/view/*</url-pattern>
+        <url-pattern>/view.html</url-pattern>
     </servlet-mapping>
 
 </web-app>
