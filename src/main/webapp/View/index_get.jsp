@@ -53,7 +53,7 @@
                 %>
                 <article class="uk-article">
 
-                    <h1 class="uk-article-title"><a class="uk-link-reset" href="/view/<%=article.getId()%>"><%=article.getTitle()%></a></h1>
+                    <h1 class="uk-article-title"><a class="uk-link-reset" href="${pageContext.request.contextPath}/view.html?id=<%=article.getId()%>"><%=article.getTitle()%></a></h1>
 
                     <p class="uk-article-meta">Written by <a href="#"><%=article.getAuthor()%></a> on <%=article.getDate()%>.</p>
 
@@ -63,7 +63,7 @@
 
                     <div class="uk-grid-small uk-child-width-auto" uk-grid>
                         <div>
-                            <a class="uk-button uk-button-text" href="#">Read more</a>
+                            <a class="uk-button uk-button-text" href="${pageContext.request.contextPath}/view.html?id=<%=article.getId()%>">Read more</a>
                         </div>
                         <div>
                             <a class="uk-button uk-button-text" href="#">5 Comments</a>
@@ -80,57 +80,11 @@
 
         <div class="uk-width-auto">
             <div class="uk-card uk-card-default uk-card-body">
-                <form action="index.html" method="post">
-                    <fieldset class="uk-fieldset">
-                        <legend class="uk-legend">Enter</legend>
-                        <div class="uk-margin">
-                            <div class="uk-inline"><span class="uk-form-icon" uk-icon="icon: user"></span> <input
-                                    class="uk-input" type="text" placeholder="Login" name="login">
-                            </div>
-                        </div>
-                        <div class="uk-margin">
-                            <div class="uk-inline">
-                                <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: lock"></span> <input
-                                    class="uk-input" type="password" placeholder="Password" name="passwd">
-                            </div>
-                        </div>
-                        <p uk-margin>
-                            <button class="uk-button uk-button-primary" type="submit" value="SignIn">Sign In</button>
-                        </p>
-                    </fieldset>
-                </form>
+                <c:import url="static/loginForm.html" />
             </div>
             <div class="uk-width-auto">
                 <div class="uk-card uk-card-default uk-card-body uk-margin-top">
-                    <form action="reg" method="post">
-                        <fieldset class="uk-fieldset">
-                            <legend class="uk-legend">Register</legend>
-                            <div class="uk-margin">
-                                <div class="uk-inline"><span class="uk-form-icon" uk-icon="icon: user"></span> <input
-                                        class="uk-input" type="text" placeholder="Login" name="login">
-                                </div>
-                            </div>
-                            <div class="uk-margin">
-                                <div class="uk-inline"><span class="uk-form-icon" uk-icon="icon: mail"></span> <input
-                                        class="uk-input" type="text" placeholder="E-mail" name="email">
-                                </div>
-                            </div>
-                            <div class="uk-margin">
-                                <div class="uk-inline"><span class="uk-form-icon" uk-icon="icon: lock"></span> <input
-                                        class="uk-input" type="password" placeholder="Password" name="passwd">
-                                </div>
-                            </div>
-                            <div class="uk-margin">
-                                <div class="uk-inline"><span class="uk-form-icon" uk-icon="icon: lock"></span> <input
-                                        class="uk-input" type="password" placeholder="Confirmation" name="passwd2">
-                                </div>
-                            </div>
-                            <p uk-margin>
-                                <button class="uk-button uk-button-primary" type="submit" value="SignUp">Sign Up
-                                </button>
-                            </p>
-                        </fieldset>
-                    </form>
+                    <c:import url="static/regForm.html" />
                 </div>
             </div>
         </div>
