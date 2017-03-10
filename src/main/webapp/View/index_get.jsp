@@ -48,10 +48,14 @@
                 <c:forEach items="${articles}" var="article">
                     <article class="uk-article">
 
-                        <h1 class="uk-article-title"><a class="uk-link-reset" href="${pageContext.request.contextPath}/view.html?id=<c:out value="${article.id}"/>"><c:out value="${article.title}"/></a>
+                        <h1 class="uk-article-title"><a class="uk-link-reset"
+                                                        href="${pageContext.request.contextPath}/view.html?id=<c:out value="${article.id}"/>"><c:out
+                                value="${article.title}"/></a>
                         </h1>
 
-                        <p class="uk-article-meta">Written by <a href="${pageContext.request.contextPath}/index.html?user=<c:out value="${article.author}"/>"><c:out value="${article.author}"/></a> on <c:out value="${article.date}"/>.</p>
+                        <p class="uk-article-meta">Written by <a
+                                href="${pageContext.request.contextPath}/index.html?user=<c:out value="${article.author}"/>"><c:out
+                                value="${article.author}"/></a> on <c:out value="${article.date}"/>.</p>
 
                         <p class="uk-text-lead"><c:out value="${article.lead_text}"/></p>
 
@@ -60,10 +64,13 @@
                         <div class="uk-grid-small uk-child-width-auto" uk-grid>
                             <div>
                                 <a class="uk-button uk-button-text"
-                                   href="${pageContext.request.contextPath}/view.html?id=<c:out value="${article.id}"/>">Read more</a>
+                                   href="${pageContext.request.contextPath}/view.html?id=<c:out value="${article.id}"/>">Read
+                                    more</a>
                             </div>
                             <div>
-                                <a class="uk-button uk-button-text" href="${pageContext.request.contextPath}/view.html?id=<c:out value="${article.id}"/>">5 Comments</a>
+                                <a class="uk-button uk-button-text"
+                                   href="${pageContext.request.contextPath}/view.html?id=<c:out value="${article.id}"/>">5
+                                    Comments</a>
                             </div>
                         </div>
                     </article>
