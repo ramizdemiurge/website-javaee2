@@ -1,5 +1,5 @@
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="Models.dbclasses.Articles" %>
+<%@ page import="Models.dbclasses.Article" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
@@ -10,8 +10,8 @@
 </c:if>
 
 <%
-    ArrayList<Articles> ArticlesList;
-    ArticlesList = Articles.InitArticles();
+    ArrayList<Article> articleList;
+    articleList = Article.InitArticles();
 %>
 
 <html lang="ru">
@@ -48,7 +48,7 @@
         <div class="uk-width-expand">
             <div class="uk-card uk-card-default uk-card-body">
                 <%
-                    for (Articles article: ArticlesList)
+                    for (Article article: articleList)
                     {
                 %>
                 <article class="uk-article">

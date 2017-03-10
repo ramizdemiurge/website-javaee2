@@ -6,7 +6,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Articles
+public class Article
 {
     private int id;
     private String title;
@@ -16,13 +16,18 @@ public class Articles
     private String text;
     private String lead_text;
 
-    public Articles()
+    public Article()
     {
         this.setTitle("Error 404");
         this.setLead_text("");
         this.setText("There's no article with this id.");
         this.setAuthor("System");
         this.setDate(new Date());
+    }
+    public Article(int id)
+    {
+        this();
+        this.setId(id);
     }
 
     public int getId()
@@ -104,9 +109,9 @@ public class Articles
         this.lead_text = lead_text;
     }
 
-    public static ArrayList<Articles> InitArticles()
+    public static ArrayList<Article> InitArticles()
     {
-        ArrayList<Articles> articles = new ArrayList<Articles>();
+        ArrayList<Article> articles = new ArrayList<Article>();
 
         DBWorker worker = new DBWorker();
         String query = "select * from articles";
@@ -116,7 +121,7 @@ public class Articles
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next())
             {
-                Articles temp = new Articles();
+                Article temp = new Article();
 
                 temp.setId(resultSet.getInt("id"));
                 temp.setTitle(resultSet.getString("title"));
@@ -128,34 +133,34 @@ public class Articles
 
                 articles.add(temp);
             }
-        } catch (SQLException Exception1)
+        } catch (SQLException Exception)
         {
-            System.err.print(Exception1);
+            System.err.print(Exception);
         }
         return articles;
     }
 
-    public static Articles InitArticle(Articles articles)
+    public static Article InitArticle(Article article)
     {
         DBWorker worker = new DBWorker();
-        String query = "select * from articles WHERE id=\"" + articles.getId() + "\"";
+        String query = "select * from articles WHERE id=\"" + article.getId() + "\"";
         try
         {
             Statement statement = worker.getConnection().createStatement();
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next())
             {
-                articles.setTitle(resultSet.getString("title"));
-                articles.setAuthor(resultSet.getString("author"));
-                articles.setDate(resultSet.getDate("date"));
-                articles.setSandbox(resultSet.getBoolean("sandbox"));
-                articles.setText(resultSet.getString("text"));
-                articles.setLead_text(resultSet.getString("lead_text"));
+                article.setTitle(resultSet.getString("title"));
+                article.setAuthor(resultSet.getString("author"));
+                article.setDate(resultSet.getDate("date"));
+                article.setSandbox(resultSet.getBoolean("sandbox"));
+                article.setText(resultSet.getString("text"));
+                article.setLead_text(resultSet.getString("lead_text"));
             }
         } catch (SQLException Exception)
         {
             System.err.print(Exception);
         }
-        return articles;
+        return article;
     }
 }
