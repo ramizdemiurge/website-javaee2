@@ -21,24 +21,11 @@
     <title>JSP Servlet</title>
 </head>
 <body>
-
-<div class="uk-background-muted uk-padding uk-panel">
-    <nav class="uk-navbar uk-navbar-container uk-margin">
-        <div class="uk-navbar-left">
-            <a class="uk-navbar-toggle" href="#">
-                <span uk-navbar-toggle-icon></span> <span class="uk-margin-small-left">Menu</span>
-            </a>
-        </div>
-    </nav>
+<div class="uk-background-muted uk-padding uk-panel" style="background-image: url(${pageContext.servletContext.contextPath}/img/background.jpg);">
     <c:if test="${not empty messages}">
-        <div class="uk-grid">
-            <div class="uk-width-1-1 ">
-
-                <div class="uk-card uk-card-primary uk-card-small uk-card-body uk-light ">
-                    <p>${messages}</p>
-                </div>
-
-            </div>
+        <div class="uk-alert-primary" uk-alert>
+            <a class="uk-alert-close" uk-close></a>
+            <p>${messages}</p>
         </div>
     </c:if>
 
@@ -47,19 +34,17 @@
             <div class="uk-card uk-card-default uk-card-body">
                 <c:forEach items="${articles}" var="article">
                     <article class="uk-article">
-
-                        <h1 class="uk-article-title"><a class="uk-link-reset"
-                                                        href="${pageContext.request.contextPath}/index.html?article=<c:out value="${article.id}"/>"><c:out
-                                value="${article.title}"/></a>
-                        </h1>
+                        <h1 class="uk-heading-line"><a class="uk-link-reset"
+                                                       href="${pageContext.request.contextPath}/index.html?article=<c:out value="${article.id}"/>"><span>
+                                <c:out value="${article.title}"/></span></a></h1>
 
                         <p class="uk-article-meta">Written by <a
                                 href="${pageContext.request.contextPath}/index.html?user=<c:out value="${article.author}"/>"><c:out
                                 value="${article.author}"/></a> on <c:out value="${article.date}"/>.</p>
 
-                        <p class="uk-text-lead"><c:out value="${article.lead_text}"/></p>
+                        <p class="uk-text-lead"></p>
 
-                        <p><c:out value="${article.text}"/></p>
+                        <p><c:out value="${article.lead_text}"/></p>
 
                         <div class="uk-grid-small uk-child-width-auto" uk-grid>
                             <div>
@@ -74,8 +59,12 @@
                             </div>
                         </div>
                     </article>
-                    <hr class="uk-divider-icon">
                 </c:forEach>
+                <ul class="uk-pagination">
+                    <li><a href="#"><span class="uk-margin-small-right" uk-pagination-previous></span> Previous</a></li>
+                    <li class="uk-margin-auto-left"><a href="#">Next <span class="uk-margin-small-left"
+                                                                           uk-pagination-next></span></a></li>
+                </ul>
             </div>
         </div>
 
@@ -90,12 +79,11 @@
                 </div>
             </div>
         </div>
+
     </div>
-
-
+    <c:import url="static/footer.html"/>
 </div>
 
 
 </body>
-<c:import url="static/footer.html"/>
 </html>
