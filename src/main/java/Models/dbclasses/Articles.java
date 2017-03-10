@@ -104,7 +104,7 @@ public class Articles
         this.lead_text = lead_text;
     }
 
-    public static ArrayList<Articles> InitArticle()
+    public static ArrayList<Articles> InitArticles()
     {
         ArrayList<Articles> articles = new ArrayList<Articles>();
 

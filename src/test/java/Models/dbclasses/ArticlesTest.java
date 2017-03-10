@@ -10,14 +10,12 @@ import java.util.Iterator;
 public class ArticlesTest
 {
     @Test
-    public void initArticles() throws Exception
+    public void initArticle() throws Exception
     {
         ArrayList<Articles> testArticles;
 
         testArticles = Articles.InitArticles();
         Iterator<Articles> iter = testArticles.iterator();
-
-        Assert.assertTrue(iter.hasNext());
 
         if (iter.hasNext())
         {
@@ -28,5 +26,13 @@ public class ArticlesTest
 //        {
 //            System.out.println(sdfdf);
 //        }
+
+        Assert.assertTrue(iter.hasNext());
+    }
+
+    @Test
+    public void InitArticles() throws Exception
+    {
+
     }
 }

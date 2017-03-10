@@ -11,7 +11,7 @@
 
 <%
     ArrayList<Articles> ArticlesList;
-    ArticlesList = Articles.InitArticle();
+    ArticlesList = Articles.InitArticles();
 %>
 
 <html lang="ru">
