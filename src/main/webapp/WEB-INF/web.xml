@@ -20,6 +20,10 @@
         <servlet-name>ExitPage</servlet-name>
         <servlet-class>Controllers.ExitServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ArticlePage</servlet-name>
+        <servlet-class>Controllers.ArticleServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>IndexPage</servlet-name>
         <url-pattern>/index.html</url-pattern>
@@ -35,6 +39,10 @@
     <servlet-mapping>
         <servlet-name>ExitPage</servlet-name>
         <url-pattern>/exit</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ArticlePage</servlet-name>
+        <url-pattern>/view/*</url-pattern>
     </servlet-mapping>
 
 </web-app>
