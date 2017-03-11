@@ -48,6 +48,7 @@ public class DBWorker
                     user.setName(resultSet.getString("name"));
                     user.setEmail(resultSet.getString("email"));
                     user.setRegDate(resultSet.getDate("regDate"));
+                    user.setProfile_photo(resultSet.getString("profile_photo"));
                 }
                 if (user.getPassword().equals(user.getRealPassword())) user.setCorrectness(true);
             } catch (SQLException Exception)
@@ -73,6 +74,7 @@ public class DBWorker
                 user.setName(resultSet.getString("name"));
                 user.setEmail(resultSet.getString("email"));
                 user.setRegDate(resultSet.getDate("regDate"));
+                user.setProfile_photo(resultSet.getString("profile_photo"));
             }
         } catch (SQLException Exception)
         {
@@ -102,6 +104,7 @@ public class DBWorker
                 temp.setEmail(resultSet.getString("email"));
                 temp.setRegDate(resultSet.getDate("regDate"));
                 temp.setPassword(resultSet.getString("password"));
+                temp.setProfile_photo(resultSet.getString("profile_photo"));
                 users.add(temp);
             }
         } catch (SQLException Exception)

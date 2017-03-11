@@ -30,27 +30,35 @@
         <br>
 
         <div uk-grid>
-            <div class="uk-width-expand">
-                <div class="uk-card uk-card-default uk-card-body">
-                    <article class="uk-article">
-                        <c:choose>
-                            <c:when test="${empty user.name}">
-                                <h1 class="uk-article-title">${user.username}</h1>
-                            </c:when>
-                            <c:otherwise>
-                                <h1 class="uk-article-title">${user.name} (${user.username})</h1>
-                            </c:otherwise>
-                        </c:choose>
-
-                        <div class="uk-grid-small uk-child-width-auto" uk-grid>
-                            <div>
-                                <a class="uk-button uk-button-text" href="${pageContext.request.contextPath}/index.html">Back
-                                    to main</a>
-                            </div>
+            <div class="uk-child-width-1-2@m" uk-grid>
+                <div>
+                    <div class="uk-card uk-card-default">
+                        <div class="uk-card-media-top">
+                            <img src="${pageContext.servletContext.contextPath}/img/avatars/${user.profile_photo}.jpg" alt="">
+                            <div class="uk-card-badge uk-label">${user.username}</div>
                         </div>
-                    </article>
+                    </div>
+                </div>
+                <div>
+                    <div class="uk-card uk-card-default">
+                        <div class="uk-card-body">
+                            <c:choose>
+                                <c:when test="${empty user.name}">
+                                    <h1 class="uk-article-title">${user.username}</h1>
+                                </c:when>
+                                <c:otherwise>
+                                    <h1 class="uk-article-title">${user.name} (${user.username})</h1>
+                                </c:otherwise>
+                            </c:choose>
+                            <p>Registation date: ${user.regDate}</p>
+                            <p>Email: <a href="mailto://${user.email}">${user.email}</a></p>
+                        </div>
+                    </div>
                 </div>
             </div>
+
+
+
         </div>
         <c:import url="static/footer.html"/>
     </div>

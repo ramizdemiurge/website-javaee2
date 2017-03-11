@@ -52,7 +52,7 @@
                                 <c:out value="${article.title}"/></span></a></h1>
 
                             <p class="uk-article-meta">Written by <a
-                                    href="${pageContext.request.contextPath}/index.html?user=<c:out value="${article.author}"/>"><c:out
+                                    href="${pageContext.request.contextPath}/users.html?login=<c:out value="${article.author}"/>"><c:out
                                     value="${article.author}"/></a> on <c:out value="${article.date}"/>.</p>
 
                             <p class="uk-text-lead"></p>
