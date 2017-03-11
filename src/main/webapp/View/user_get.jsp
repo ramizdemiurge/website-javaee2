@@ -47,7 +47,7 @@
                                     <h1 class="uk-article-title">${user.username}</h1>
                                 </c:when>
                                 <c:otherwise>
-                                    <h1 class="uk-article-title">${user.name} (${user.username})</h1>
+                                    <h1 class="uk-article-title">${user.name}</h1>
                                 </c:otherwise>
                             </c:choose>
                             <p>Registation date: ${user.regDate}</p>
