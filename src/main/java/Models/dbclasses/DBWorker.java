@@ -3,6 +3,7 @@ package Models.dbclasses;
 import Models.UserModel.User;
 
 import java.sql.*;
+import java.util.ArrayList;
 //   /opt/lampp/mysql/scripts/ctl.sh start
 
 public class DBWorker
@@ -33,7 +34,7 @@ public class DBWorker
         return connection;
     }
 
-    public static User InitUser(User user)
+    public static User InitValidUser(User user)
     {
             DBWorker worker = new DBWorker();
             String query = "select * from users WHERE username=\"" + user.getUsername() + "\"";
@@ -54,5 +55,60 @@ public class DBWorker
                 System.err.print(Exception);
             }
         return user;
+    }
+
+    public static User InitUser(User user)
+    {
+        DBWorker worker = new DBWorker();
+        String query = "select * from users WHERE username=\"" + user.getUsername() + "\"";
+        try
+        {
+            user.setUsername(null);
+            Statement statement = worker.getConnection().createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next())
+            {
+                user.setUsername(resultSet.getString("username"));
+                user.setRealPassword(resultSet.getString("password"));
+                user.setName(resultSet.getString("name"));
+                user.setEmail(resultSet.getString("email"));
+                user.setRegDate(resultSet.getDate("regDate"));
+            }
+        } catch (SQLException Exception)
+        {
+            System.err.print(Exception);
+        }
+        return user;
+    }
+
+    public static ArrayList<User> InitUsers()
+    {
+        ArrayList<User> users = new ArrayList<User>();
+
+        DBWorker worker = new DBWorker();
+        String query = "select * from users";
+        try
+        {
+            Statement statement = worker.getConnection().createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next())
+            {
+                User temp = new User();
+
+                temp.setId(resultSet.getInt("id"));
+                temp.setUsername(resultSet.getString("username"));
+                temp.setRealPassword(resultSet.getString("password"));
+                temp.setName(resultSet.getString("name"));
+                temp.setEmail(resultSet.getString("email"));
+                temp.setRegDate(resultSet.getDate("regDate"));
+                temp.setPassword(resultSet.getString("password"));
+                users.add(temp);
+            }
+        } catch (SQLException Exception)
+        {
+            System.err.print(Exception);
+        }
+        //Collections.reverse(users);
+        return users;
     }
 }

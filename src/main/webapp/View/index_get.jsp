@@ -21,7 +21,7 @@
     <title>JSP Servlet</title>
 </head>
 <body>
-<div style="background-image: url(${pageContext.servletContext.contextPath}/img/background.jpg);">
+<div  class="uk-background-fixed" style="background-image: url(${pageContext.servletContext.contextPath}/img/background.jpg);">
     <div class="uk-padding uk-panel">
 
         <c:if test="${not empty messages}">
@@ -34,9 +34,9 @@
 
         <div class=" uk-panel" style="background-color: #ffffff" uk-sticky>
             <ul class="uk-subnav uk-subnav-pill" uk-margin>
-                <li class="uk-active"><a href="#">Active</a></li>
-                <li><a href="#">Item</a></li>
-                <li><a href="#">Item</a></li>
+                <li class="uk-active"><a href="${pageContext.request.contextPath}/index.html">Main</a></li>
+                <li><a href="${pageContext.request.contextPath}/users.html">Users</a></li>
+                <li><a href="#">About</a></li>
             </ul>
         </div>
 

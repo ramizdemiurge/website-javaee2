@@ -51,7 +51,7 @@ public class MainServlet extends HttpServlet
 
         if (!(Methods.EmptyStringDetector(login,passwd)))
         {
-            User currentUser = DBWorker.InitUser(new User(login,passwd));
+            User currentUser = DBWorker.InitValidUser(new User(login,passwd));
             if (currentUser.getCorrectness())
             {
                 mySession.setAttribute("username", login);

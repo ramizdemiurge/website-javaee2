@@ -17,7 +17,10 @@ abstract class Person extends Object
         /*asasaaa */
         return name;
     }
-
+    public void setUsername(String username)
+    {
+        this.username = username;
+    }
     public void setName(String name)
     {
         this.name = name;

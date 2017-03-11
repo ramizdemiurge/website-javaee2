@@ -7,11 +7,17 @@ import java.util.Date;
  */
 public class User extends Person
 {
+    private int id;
     private String password;
     private String realPassword;
     private String email;
     private Date regDate;
     private boolean correctness;
+
+    public User()
+    {
+        super(null);
+    }
 
     public void setCorrectness (boolean correctness)
     {
@@ -52,7 +58,7 @@ public class User extends Person
     public String toString()
     {
         //return getClass().getName() + "[name=" + getUsername() + "]";
-        if (!(this.getName().equals(null)))
+        if (this.getName() != null)
         {
             return this.getName() + "(" + getUsername() + ")";
         }
@@ -67,6 +73,12 @@ public class User extends Person
     public String getRealPassword()
     {
         return realPassword;
+    }
+
+    @Override
+    public String getUsername()
+    {
+        return super.getUsername();
     }
 
     public void setRealPassword(String realPassword)
@@ -92,5 +104,15 @@ public class User extends Person
     public void setRegDate(Date regDate)
     {
         this.regDate = regDate;
+    }
+
+    public int getId()
+    {
+        return id;
+    }
+
+    public void setId(int id)
+    {
+        this.id = id;
     }
 }
