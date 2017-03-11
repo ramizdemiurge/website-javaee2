@@ -82,7 +82,8 @@ public class RegisterServlet extends HttpServlet
                                      * Но это в будущем.
                                      */
                                     Date date = new Date();
-                                    query = "INSERT INTO users (username,password,email,reg_date) VALUES (\""+string_datas[0]+"\",\""+string_datas[2]+"\",\""+string_datas[1]+"\",\""+date.toString()+"\")";
+                                    java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+                                    query = "INSERT INTO users (username,password,email,reg_date,regDate) VALUES (\""+string_datas[0]+"\",\""+string_datas[2]+"\",\""+string_datas[1]+"\",\"" + date.toString() + "\",\"" + sqlDate + "\")";
                                     try
                                     {
                                         Statement state = worker.getConnection().createStatement();
