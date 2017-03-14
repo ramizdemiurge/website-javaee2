@@ -1,56 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns="http://java.sun.com/xml/ns/javaee"
-         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
-         version="3.0">
-
-    <servlet>
-        <servlet-name>IndexPage</servlet-name>
-        <servlet-class>Controllers.MainServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>HomePage</servlet-name>
-        <servlet-class>Controllers.HomeServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>RegPage</servlet-name>
-        <servlet-class>Controllers.RegisterServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ExitPage</servlet-name>
-        <servlet-class>Controllers.ExitServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ArticlePage</servlet-name>
-        <servlet-class>Controllers.ArticleServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>UserlistServlet</servlet-name>
-        <servlet-class>Controllers.UserlistServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>IndexPage</servlet-name>
-        <url-pattern>/index.html</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>HomePage</servlet-name>
-        <url-pattern>/home</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>RegPage</servlet-name>
-        <url-pattern>/reg</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ExitPage</servlet-name>
-        <url-pattern>/exit</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ArticlePage</servlet-name>
-        <url-pattern>/view.html</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>UserlistServlet</servlet-name>
-        <url-pattern>/users.html</url-pattern>
-    </servlet-mapping>
+<web-app id="WebApp_ID" version="2.4"
+         xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
+    http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 
 </web-app>

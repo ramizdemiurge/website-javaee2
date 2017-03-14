@@ -26,5 +26,5 @@
     </div>
 </div>
 </body>
-<c:import url="static/footer.html"/>
+<c:import url="../View/static/footer.html"/>
 </html>
