@@ -1,9 +1,10 @@
 package Controllers;
 
 import Models.dbclasses.DBWorker;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -12,16 +13,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Date;
 
-/**
- * Created by adsf on 15.01.2017.
- */
-
-public class RegisterServlet extends HttpServlet
+@Controller
+@RequestMapping("/reg")
+public class RegisterController
 {
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
+    @RequestMapping(method = RequestMethod.POST)
+    public void RegistererContr(HttpServletRequest req, HttpServletResponse resp) throws IOException
     {
-
         String[] string_datas = new String[4];
         string_datas[0] = req.getParameter("login").trim().toLowerCase();
         string_datas[1] = req.getParameter("email").trim().toLowerCase();
