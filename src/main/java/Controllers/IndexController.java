@@ -4,9 +4,13 @@ import Models.Methods;
 import Models.UserModel.User;
 import Models.dbclasses.Article;
 import Models.dbclasses.DBWorker;
+import config.DataConfig;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -53,7 +57,13 @@ public class IndexController
         if (!(Methods.EmptyStringDetector(login,passwd)))
         {
             User currentUser = DBWorker.InitValidUser(new User(login,passwd));
-            if (currentUser.getCorrectness())
+
+            ApplicationContext context = new AnnotationConfigApplicationContext(DataConfig.class);
+            UserService userService = context.getBean(UserService.class);
+            entity.User user = userService.getByUsername(login);
+
+
+            if (user.getPassword().equals(passwd))
             {
                 mySession.setAttribute("username", login);
                 mySession.setAttribute("passwd", passwd);
