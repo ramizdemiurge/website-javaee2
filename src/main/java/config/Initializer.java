@@ -22,6 +22,7 @@ public class Initializer implements WebApplicationInitializer
 
         // Регистрируем в контексте конфигурационный класс, который мы создадим ниже
         ctx.register(WebAppConfig.class);
+        ctx.register(DataConfig.class);
         servletContext.addListener(new ContextLoaderListener(ctx));
 
         ctx.setServletContext(servletContext);
