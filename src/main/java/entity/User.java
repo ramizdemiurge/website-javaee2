@@ -36,6 +36,7 @@ public class User
     @Column(name = "role_id")
     private int role_id;
 
+
     @Column(name = "profile_photo")
     private String profile_photo;
 
@@ -133,4 +134,5 @@ public class User
     {
         this.profile_photo = profile_photo;
     }
+
 }

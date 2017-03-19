@@ -3,13 +3,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <c:set var="articles" value="${sessionScope.articles}"/>
-<c:set var="user" value="${sessionScope.user}"/>
-
-<c:if test="${not empty user.username}">
-    <c:if test="${not empty user.password}">
-        <c:redirect url="/home"/>
-    </c:if>
-</c:if>
 
 
 <html lang="ru">
@@ -92,7 +85,7 @@
                     <sec:authorize access="isAuthenticated()">
                         <p>Ваш логин: <sec:authentication property="principal.username" /></p>
                         <p><a class="btn btn-lg btn-danger" href="<c:url value="/logout" />" role="button">Выйти</a></p>
-
+                        <c:redirect url="/home"/>
                     </sec:authorize>
                 </div>
                 <div class="uk-width-auto">

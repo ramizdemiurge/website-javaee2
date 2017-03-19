@@ -15,9 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-/**
- * Created by allard on 3/17/17.
- */
 @Controller
 @RequestMapping("/users.html")
 public class UserlistController
