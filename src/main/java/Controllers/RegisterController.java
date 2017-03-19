@@ -2,6 +2,7 @@ package Controllers;
 
 import config.DataConfig;
 import entity.User;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
@@ -61,44 +62,53 @@ public class RegisterController
                                     Date date = new Date();
                                     java.sql.Date sqlDate = new java.sql.Date(date.getTime());
 
-                                        User user1 = new User();
-                                        user1.setUsername(string_datas[0]);
-                                        user1.setEmail(string_datas[1]);
-                                        user1.setPassword(string_datas[2]);
-                                        user1.setRegDate(sqlDate);
-                                        user1.setReg_date(date.toString());
-                                        userService.addUser(user1);
+                                    string_datas[2] = DigestUtils.sha1Hex(string_datas[2]);
 
-                                        req.getSession().setAttribute("messages","You have registered.<br>Your username: "+string_datas[0]);
-                                        resp.sendRedirect("/index.html");
+                                    User user1 = new User();
+                                    user1.setUsername(string_datas[0]);
+                                    user1.setEmail(string_datas[1]);
+                                    user1.setPassword(string_datas[2]);
+                                    user1.setRegDate(sqlDate);
+                                    user1.setReg_date(date.toString());
+                                    userService.addUser(user1);
 
-                                } else {
-                                    req.getSession().setAttribute("messages","Try another email adress.");
+                                    req.getSession().setAttribute("messages", "You have registered.<br>Your username: " + string_datas[0]);
+                                    resp.sendRedirect("/index.html");
+
+                                } else
+                                {
+                                    req.getSession().setAttribute("messages", "Try another email adress.");
                                     resp.sendRedirect("/index.html");
                                 }
-                            } else {
-                                req.getSession().setAttribute("messages","Try another username.");
+                            } else
+                            {
+                                req.getSession().setAttribute("messages", "Try another username.");
                                 resp.sendRedirect("/index.html");
                             }
-                        } else {
-                            req.getSession().setAttribute("messages","Password and password confirmation values are not same.");
+                        } else
+                        {
+                            req.getSession().setAttribute("messages", "Password and password confirmation values are not same.");
                             resp.sendRedirect("/index.html");
                         }
-                    } else {
-                        req.getSession().setAttribute("messages","Enter your password confirmation.");
+                    } else
+                    {
+                        req.getSession().setAttribute("messages", "Enter your password confirmation.");
                         resp.sendRedirect("/index.html");
                     }
-                } else {
-                    req.getSession().setAttribute("messages","Enter your password.");
+                } else
+                {
+                    req.getSession().setAttribute("messages", "Enter your password.");
                     resp.sendRedirect("/index.html");
                 }
 
-            } else {
-                req.getSession().setAttribute("messages","Enter your email.");
+            } else
+            {
+                req.getSession().setAttribute("messages", "Enter your email.");
                 resp.sendRedirect("/index.html");
             }
-        } else {
-            req.getSession().setAttribute("messages","Enter your login.");
+        } else
+        {
+            req.getSession().setAttribute("messages", "Enter your login.");
             resp.sendRedirect("/index.html");
         }
     }
