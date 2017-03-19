@@ -39,6 +39,11 @@ public class User
     @Column(name = "profile_photo")
     private String profile_photo;
 
+    {
+        profile_photo = "user";
+        role_id = 0;
+    }
+
     public long getId()
     {
         return id;

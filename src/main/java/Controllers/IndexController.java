@@ -1,20 +1,22 @@
 package Controllers;
 
 import Models.Methods;
-import Models.dbclasses.Article;
 import config.DataConfig;
+import entity.Article;
+import entity.User;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import service.ArticleService;
 import service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping("/")
@@ -25,16 +27,16 @@ public class IndexController
     {
         //req.getSession().removeAttribute("messages");
         String string_id = req.getParameter("article");
+        ApplicationContext context = new AnnotationConfigApplicationContext(DataConfig.class);
+        ArticleService articleService = context.getBean(ArticleService.class);
         if (string_id != null)
         {
             int id = Integer.parseInt(string_id.trim());
-            Article article;
-            article = Article.InitArticle(new Article(id));
+            Article article = articleService.getById(id);
             req.getSession().setAttribute("article", article);
             return "article_get";
         }
-            ArrayList<Article> articleList;
-            articleList = Article.InitArticles();
+            List<Article> articleList = articleService.getAll();
             req.getSession().setAttribute("articles",articleList);
         return "index_get";
     }
@@ -56,21 +58,19 @@ public class IndexController
         {
             ApplicationContext context = new AnnotationConfigApplicationContext(DataConfig.class);
             UserService userService = context.getBean(UserService.class);
-            entity.User user = userService.getByUsername(login);
+            User user = userService.getByUsername(login);
 
 
             if (user.getPassword().equals(passwd))
             {
-                mySession.setAttribute("username", user.getUsername());
-                mySession.setAttribute("passwd", user.getPassword());
+                mySession.setAttribute("user", user);
                 req.getSession().removeAttribute("messages");
                 resp.sendRedirect("/home");
 
             } else
             {
                 mySession.setAttribute("messages","Correct your login/password.");
-                mySession.removeAttribute("username");
-                mySession.removeAttribute("password");
+                mySession.removeAttribute("user");
                 resp.sendRedirect("/index.html");
             }
         } else

@@ -17,8 +17,7 @@ public class ExitController
     public void RemoveSession(HttpServletRequest req, HttpServletResponse resp) throws IOException
     {
         HttpSession mySession = req.getSession();
-        mySession.removeAttribute("username");
-        mySession.removeAttribute("password");
+        mySession.removeAttribute("user");
         resp.sendRedirect("/");
         //return null;
     }

@@ -1,15 +1,15 @@
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="Models.dbclasses.Article" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<c:if test="${not empty username}">
-    <c:if test="${not empty passwd}">
+<c:set var="articles" value="${sessionScope.articles}"/>
+<c:set var="user" value="${sessionScope.user}"/>
+
+<c:if test="${not empty user.username}">
+    <c:if test="${not empty user.password}">
         <c:redirect url="/home"/>
     </c:if>
 </c:if>
 
-<c:set var="articles" value="${sessionScope.articles}"/>
 
 <html lang="ru">
 <head>

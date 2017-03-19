@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 
-<c:set var="user" value="${sessionScope.user}"/>
+<c:set var="user" value="${sessionScope.user_info}"/>
 
 
 <html lang="ru">

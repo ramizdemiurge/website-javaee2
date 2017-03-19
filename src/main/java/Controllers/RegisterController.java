@@ -1,16 +1,17 @@
 package Controllers;
 
-import Models.dbclasses.DBWorker;
+import config.DataConfig;
+import entity.User;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.Date;
 
 @Controller
@@ -39,39 +40,17 @@ public class RegisterController
                              * Тут надо чекнуть, если ли в бд юзер с таким именем.
                              * Работаем с базой данных
                              */
-                            DBWorker worker = new DBWorker();
-                            boolean status = true;
-                            // String query = "select * from users WHERE username=" + login;
-                            String query = "select * from users WHERE username=\""+string_datas[0]+"\"";
-                            try
-                            {
-                                Statement state = worker.getConnection().createStatement();
-                                ResultSet resultSet = state.executeQuery(query);
-                                while (resultSet.next())
-                                {
-                                    String bd_username = resultSet.getString("username");
-                                    if (string_datas[0].equals(bd_username)) status = false;
-                                }
-                            } catch (SQLException err0) { System.err.print("DB connection error.<br>"+err0); }
-                            if (status)
+                            ApplicationContext context = new AnnotationConfigApplicationContext(DataConfig.class);
+                            UserService userService = context.getBean(UserService.class);
+                            User user = userService.getByUsername(string_datas[0]);
+                            if (user == null)
                             {
                                 /**
                                  * Теперь чекаю, есть ли в бд юзер с таким e-mail
                                  * база данных
                                  */
-                                query = "select * from users WHERE email=\""+string_datas[1]+"\"";
-                                try
-                                {
-                                    Statement state = worker.getConnection().createStatement();
-                                    ResultSet resultSet = state.executeQuery(query);
-                                    while (resultSet.next())
-                                    {
-                                        String bd_email = resultSet.getString("email");
-                                        if (string_datas[1].equals(bd_email)) status = false;
-                                    }
-                                } catch (SQLException err1) { System.err.print("DB connection error.[2]<br>"+err1); }
-
-                                if (status)
+                                user = userService.getByEmail(string_datas[1]);
+                                if (user == null)
                                 {
                                     /**
                                      * Итак, все поля введены. Пароль и подтверждение совпадают.
@@ -81,14 +60,17 @@ public class RegisterController
                                      */
                                     Date date = new Date();
                                     java.sql.Date sqlDate = new java.sql.Date(date.getTime());
-                                    query = "INSERT INTO users (username,password,email,reg_date,regDate) VALUES (\""+string_datas[0]+"\",\""+string_datas[2]+"\",\""+string_datas[1]+"\",\"" + date.toString() + "\",\"" + sqlDate + "\")";
-                                    try
-                                    {
-                                        Statement state = worker.getConnection().createStatement();
-                                        state.executeUpdate(query);
+
+                                        User user1 = new User();
+                                        user1.setUsername(string_datas[0]);
+                                        user1.setEmail(string_datas[1]);
+                                        user1.setPassword(string_datas[2]);
+                                        user1.setRegDate(sqlDate);
+                                        user1.setReg_date(date.toString());
+                                        userService.addUser(user1);
+
                                         req.getSession().setAttribute("messages","You have registered.<br>Your username: "+string_datas[0]);
                                         resp.sendRedirect("/index.html");
-                                    } catch (SQLException err) { System.err.print(err); }
 
                                 } else {
                                     req.getSession().setAttribute("messages","Try another email adress.");

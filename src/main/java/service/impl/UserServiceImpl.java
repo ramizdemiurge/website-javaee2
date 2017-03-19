@@ -24,13 +24,19 @@ public class UserServiceImpl implements UserService
     @Override
     public void delete(long id)
     {
-    userRepository.delete(id);
+        userRepository.delete(id);
     }
 
     @Override
     public User getByUsername(String username)
     {
         return userRepository.findByUsername(username);
+    }
+
+    @Override
+    public User getByEmail(String email)
+    {
+        return userRepository.findByEmail(email);
     }
 
     @Override

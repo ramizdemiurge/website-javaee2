@@ -1,6 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+<c:set var="user" value="${sessionScope.user}"/>
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -15,16 +17,16 @@
 <div>
     <div class="uk-background-muted uk-padding uk-panel">
         <c:choose>
-            <c:when test="${empty Datas[1]}">
-                Welcome: ${username}
+            <c:when test="${empty user.name}">
+                Welcome: ${user.username}
             </c:when>
             <c:otherwise>
-                Welcome: ${Datas[1]} (${username})
+                Welcome: ${user.name} (${user.username})
             </c:otherwise>
         </c:choose>
-        <a href=exit>Exit</a>.<br>Registration date: ${Datas[0]}
+        <a href=exit>Exit</a>.<br>Registration date: ${user.reg_date}
     </div>
 </div>
 </body>
-<c:import url="../View/static/footer.html"/>
+<c:import url="../pages/static/footer.html"/>
 </html>
