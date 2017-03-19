@@ -1,9 +1,7 @@
 package Controllers;
 
 import Models.Methods;
-import Models.UserModel.User;
 import Models.dbclasses.Article;
-import Models.dbclasses.DBWorker;
 import config.DataConfig;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -56,8 +54,6 @@ public class IndexController
 
         if (!(Methods.EmptyStringDetector(login,passwd)))
         {
-            User currentUser = DBWorker.InitValidUser(new User(login,passwd));
-
             ApplicationContext context = new AnnotationConfigApplicationContext(DataConfig.class);
             UserService userService = context.getBean(UserService.class);
             entity.User user = userService.getByUsername(login);
@@ -65,8 +61,8 @@ public class IndexController
 
             if (user.getPassword().equals(passwd))
             {
-                mySession.setAttribute("username", login);
-                mySession.setAttribute("passwd", passwd);
+                mySession.setAttribute("username", user.getUsername());
+                mySession.setAttribute("passwd", user.getPassword());
                 req.getSession().removeAttribute("messages");
                 resp.sendRedirect("/home");
 
